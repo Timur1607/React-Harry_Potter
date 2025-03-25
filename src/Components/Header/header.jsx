@@ -1,7 +1,7 @@
 import Form from './Form/form'
 import './header.scss'
 
-export default function Header(){
+export default function Header(props){
     return(
         <>
             <header className="header">
@@ -11,7 +11,7 @@ export default function Header(){
                         <p className="header__title_text">View all characters from the Harry Potter universe</p>
                     </div>
                     <div className="header__searching">
-                        <Form/>
+                        <Form props={props}/>
                     </div>
                 </div>
             </header>

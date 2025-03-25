@@ -1,104 +1,51 @@
-import './main.scss'
-// import {data} from '../../Data/data'
-import Article from './Article/article'
+import s from './main.module.scss'
+import Article from '../Article/article'
 import { useState, useEffect } from 'react'
-export default function Main(){
 
+export default function Main(props){
+    const [data, setData] = useState([])
+    const [stableData, setStableData] = useState([])
 
-    
-    // let id = -1
-    // let NewData = []
-    // async function getData() {
-    //     try{
-    //         console.log('Получаем данные...');
-    //         let response = await fetch('https://hp-api.onrender.com/api/characters/')
-    //         if(!response.ok) throw new Error(`Где-то ошибка: ${response.status}`);
-    //         let data = await response.json();
-    //         console.log(data);
-    //         // NewData = data
-    //         console.log('2')
-            
-    //         // async function Articles() {
-    //         //     data.map((el) => {
-    //         //         id++
-    //         //         return(
-    //         //             <Article key={id} info={el}/>
-    //         //         )
-    //         //     })
-    //         // }
-    //         // data.map((el) => {
-    //         //     id++
-    //         //     return(
-    //         //         <Article key={id} info={el}/>
-    //         //     )
-    //         // })
-
-    //     } catch (error){
-    //         console.log(error);
-    //     }
-    // }
-    const [number, setNumber] = useState('')
     useEffect(()=>{
-        let data = 0
-        let id = -1
-        test()
-        async function test() {
-            let test = await fetch('https://hp-api.onrender.com/api/characters/');
-            data = await test.json();
-            letsGo(data)
-            return data
+        console.log(props.name, props.school);
+        if(props.name !== '' && props.school === ''){
+            setData(stableData.filter(el => el.name.toLowerCase().includes(props.name.toLowerCase())))
+        } else if(props.name === '' && props.school !== ''){
+            setData(stableData.filter(el => el.house === props.school))
+        } else if(props.name === '' && props.school === ''){
+            setData(stableData)
+        } else if(props.name !== '' && props.school !== ''){
+            setData(stableData.filter(el => (el.name.toLowerCase().includes(props.name.toLowerCase()) && el.house === props.school)))
         }
-        function letsGo(data){
-            let articles = document.querySelector('.articles')
-            // console.log(data);
-            setNumber(data.map((el) => {
-                id++
-                return(
-                    <Article key={id} info={el}/>
-                )
-            }))
-        }
-    })
-    
+    }, [props.name, props.school])
 
-    // function createArticle() {
-    //     console.log(testdata);
-        
-    //     let gr = test
-    //     console.log('готово');
-    //     CheckArticle(gr)
-    // }
-    // let check
-    // let CheckArticle
     
+    
+    
+    useEffect(function(){
+        Data()
+        async function Data(){
+            let test = await fetch('https://hp-api.onrender.com/api/characters/');
+            let tdata = await test.json();
+            setStableData(tdata)
+            setData(tdata)
+        }
+    }, [])
+    
+    //все норм, но он запускает асинхронную функцию
+    //решил эту проблему
+     
     return (
         <>
-            <main className="main">
-                <div className="container">
-                    <div className="articles">
-                        {number}
+            <main className={s.main}>
+                <div className='container'>
+                    <div className={s.articles}>
+                        {data.map((el, i) => (
+                            <Article info={el} like={props.like} key={i}/>
+                        ))}
                     </div>
                 </div>
             </main>
         </>
     )
 }
-
-{/* {check = setInterval(()=>{
-                            test()
-                            if(testdata !== 'undefined'){
-                                // createArticle()
-                                console.log('запуск');
-                                console.log(typeof(testdata));
-                                
-                                clearInterval(check)
-                                testdata.map((el) => {
-                                    id++
-                                    return(
-                                        <Article key={id} info={el}/>
-                                    )
-                                })
-                            } else{
-
-                            }
-                        }, 1000)} */}
