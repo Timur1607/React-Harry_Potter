@@ -14,11 +14,15 @@ export default function Article({info, check}){
                 setStatus(!status)
             }
         }
-        
+        // console.log(check);
+    }, [])
+
+    useEffect(()=>{
         if(check !== undefined){
             setStatus(true)
+            console.log(1); 
         }
-    }, [])
+    })
 
     function test(){
         setStatus(!status)

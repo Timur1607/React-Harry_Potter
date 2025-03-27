@@ -6,11 +6,11 @@
 
 @font-face {
     font-family: "Inter";
-    src: url(./font/Inter/Inter-VariableFont_opsz\,wght.eot),
-    url(./font/Inter/Inter-VariableFont_opsz\,wght.otf),
-    url(./font/Inter/Inter-VariableFont_opsz\,wght.ttf),
-    url(./font/Inter/Inter-VariableFont_opsz\,wght.woff),
-    url(./font/Inter/Inter-VariableFont_opsz\,wght.woff2);
+    src: url(./font/Inter/Inter-VariableFont_opsz.eot),
+    url(./font/Inter/Inter-VariableFont_opsz.otf),
+    url(./font/Inter/Inter-VariableFont_opsz.ttf),
+    url(./font/Inter/Inter-VariableFont_opsz.woff),
+    url(./font/Inter/Inter-VariableFont_opsz.woff2);
 }
 
 body{
