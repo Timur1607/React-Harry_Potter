@@ -6,7 +6,7 @@ export default function Button(){
     
     return(
         <>
-            <button  className='button' onClick={() => navigate('/Liked')}>
+            <button  className='button' onClick={() => navigate('/React-Harry_Potter/Liked')}>
                 <img className='button__img' src={Like} alt="" />
                 <p className='button__p'>Show Liked</p>
             </button>

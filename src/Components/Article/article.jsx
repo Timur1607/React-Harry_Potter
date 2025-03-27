@@ -3,9 +3,10 @@ import NoName from '../../Picture/NoName.jpg'
 import NoLike from '../../Picture/NoLike.svg'
 import Like from '../../Picture/like.svg'
 import { useEffect, useState } from 'react'
-export default function Article({info, check, arr}){
+export default function Article({info, check}){
 
     const [status, setStatus] = useState(false)
+    let arr = localStorage.getItem('HP') !== null ? JSON.parse(localStorage.HP) : []
 
     useEffect(() => {
         for(let el of arr){
@@ -13,6 +14,7 @@ export default function Article({info, check, arr}){
                 setStatus(!status)
             }
         }
+        
         if(check !== undefined){
             setStatus(true)
         }
@@ -20,6 +22,7 @@ export default function Article({info, check, arr}){
 
     function test(){
         setStatus(!status)
+        arr = localStorage.getItem('HP') !== null ? JSON.parse(localStorage.HP) : []
         if(status === false){
             arr.push({
                 image: `${info.image !== '' ? info.image : NoName}`,
@@ -32,13 +35,11 @@ export default function Article({info, check, arr}){
             })
             localStorage.setItem("HP", JSON.stringify(arr))
         } else if(status === true){
-            let test3 = JSON.parse(localStorage.HP)
-            let test4 = test3.filter(el => el.name !== info.name)
-            localStorage.setItem("HP", JSON.stringify(test4))
+            localStorage.setItem("HP", JSON.stringify(arr.filter(el => el.name !== info.name)))
         }
 
         if(check !== undefined){
-            check.setCheck(1)
+            check.setCheck(!check.check)
         }
     }
     //крч, после изменения хука все данные слетают,

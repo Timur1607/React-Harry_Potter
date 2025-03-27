@@ -4,14 +4,11 @@ import Article from '../Article/article'
 export default function LikedMain(){
 
     const [arr, setArr] = useState(localStorage.getItem('HP') !== null ? JSON.parse(localStorage.HP) : []) 
-    const [check, setCheck] = useState(0)
+    const [check, setCheck] = useState(1)
     useEffect(()=>{
-        console.log(check);
         setArr(localStorage.getItem('HP') !== null ? JSON.parse(localStorage.HP) : [])
-        console.log(arr);
+        console.log(1);
     },[check])
-    
-
 
     return(
         <>
