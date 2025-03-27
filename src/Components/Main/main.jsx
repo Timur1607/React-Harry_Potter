@@ -5,6 +5,12 @@ import { useState, useEffect } from 'react'
 export default function Main(props){
     const [data, setData] = useState([])
     const [stableData, setStableData] = useState([])
+    
+    const localStorage = window.localStorage
+    const [arr, setArr] = useState(localStorage.getItem('HP') !== null ? JSON.parse(localStorage.HP) : []) 
+    useEffect(()=>{
+        setArr(localStorage.getItem('HP') !== null ? JSON.parse(localStorage.HP) : [])
+    }, [localStorage.getItem('HP')])
 
     useEffect(()=>{
         console.log(props.name, props.school);
@@ -18,9 +24,6 @@ export default function Main(props){
             setData(stableData.filter(el => (el.name.toLowerCase().includes(props.name.toLowerCase()) && el.house === props.school)))
         }
     }, [props.name, props.school])
-
-    
-    
     
     useEffect(function(){
         Data()
@@ -31,7 +34,7 @@ export default function Main(props){
             setData(tdata)
         }
     }, [])
-    
+
     //все норм, но он запускает асинхронную функцию
     //решил эту проблему
      
@@ -41,7 +44,7 @@ export default function Main(props){
                 <div className='container'>
                     <div className={s.articles}>
                         {data.map((el, i) => (
-                            <Article info={el} like={props.like} key={i}/>
+                            <Article info={el} key={i} arr={arr}/>
                         ))}
                     </div>
                 </div>

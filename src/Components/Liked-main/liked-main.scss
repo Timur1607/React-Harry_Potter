@@ -1,0 +1,11 @@
+.main{
+    padding: 32px 0 30px;
+
+    &__articles{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

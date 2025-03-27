@@ -1,6 +1,6 @@
 .header{
-    margin-top: 64px;
-
+    padding: 64px 0 40px;
+    
     &__title{
         margin-bottom: 48px;
         display: flex;
@@ -120,6 +120,7 @@
                 top: 100%;
                 transform: translateX(-50%);
                 gap: 4px;
+                z-index: 10;
 
                 &_house{
                     color: var(--Secondary-Light-Color, #ABB5BE);

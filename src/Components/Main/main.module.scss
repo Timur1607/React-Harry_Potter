@@ -1,6 +1,5 @@
 .main{
-    margin-bottom: 30px;
-
+    padding: 40px 0 30px;
 }
 
 .articles{
@@ -22,6 +21,7 @@
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    // z-index: -1;
 
     &__picture{
         &_img{
@@ -64,33 +64,6 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-
-        &_noLike{
-            display: block;
-            opacity: 1;
-            transition: 0.3s;
-
-            
-            &_onClick{
-                opacity: 0;
-                display: none;
-                transition: 0.3s;
-            }
-        }
-
-        &_like{
-            display: none;
-            opacity: 0;
-            transition: 0.3s;
-
-            &_onClick{
-                display: block;
-                opacity: 1;
-                transition: 0.3s;
-            }
-        }
-        
-        
     }
 }
 
